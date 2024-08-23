@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Bienvenido al Dashboard de Apicultura</h1>
+    <p class="lead">Optimiza la producción y venta de polen a lo largo del año.</p>
+    <hr class="my-4">
+    <p>Explora las herramientas que te ofrecemos para mejorar la eficiencia en la apicultura.</p>
+    <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Comenzar</a> -->
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/colmena.jpg') }}" class="card-img-top" alt="Colmena">
+            <div class="card-body">
+                <h5 class="card-title">Reactivación de Colmenas</h5>
+                <p class="card-text">Sugerencias sobre los mejores momentos para reactivar colmenas basadas en datos ambientales.</p>
+                <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/dashboard.jpg') }}" class="card-img-top" alt="Dashboard">
+            <div class="card-body">
+                <h5 class="card-title">Disponibilidad del Producto</h5>
+                <p class="card-text">Consulta la disponibilidad de polen y ajusta tus estrategias de venta según la demanda.</p>
+                <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/recoleccion.jpg') }}" class="card-img-top" alt="Recolección">
+            <div class="card-body">
+                <h5 class="card-title">Tiempos de Recolección</h5>
+                <p class="card-text">Identifica los periodos óptimos para la recolección de polen, maximizando la calidad del producto.</p>
+                <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
