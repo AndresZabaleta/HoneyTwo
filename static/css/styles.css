@@ -16,6 +16,18 @@ body {
     font-weight:500;
 }
 
+.btn-custom {
+    background-color: #ff5722; /* Color de fondo personalizado */
+    color: #ffffff; /* Color del texto personalizado */
+    border: none; /* Quitar el borde */
+}
+
+/* Cambiar el color del botón al pasar el mouse sobre él */
+.btn-custom:hover {
+    background-color: #e64a19; /* Color de fondo al pasar el mouse */
+    color: #ffffff; /* Color del texto al pasar el mouse */
+}
+
 .card {
     margin-top: 20px;
 }
@@ -26,10 +38,28 @@ body {
     border-radius: 10px;
 }
 footer {
-    background-color: #333; /* Color gris oscuro */
+    background-color: rgb(102, 50, 2); /* Color gris oscuro */
     color: #fff; /* Texto blanco */
     padding: 20px;
     text-align: center;
     font-size: 14px; /* Tamaño de fuente más pequeño */
     font-style: italic; /* Estilo de fuente cursiva */
 }
+/* Estilos adicionales para el formulario */
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+

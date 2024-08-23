@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Datos de Apicultores</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Número de Colmenas</th>
+                <th>Ubicación</th>
+                <th>Temperatura</th>
+                <th>Humedad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fila in datos %}
+            <tr>
+                <td>{{ fila[0] }}</td>
+                <td>{{ fila[1] }}</td>
+                <td>{{ fila[2] }}</td>
+                <td>{{ fila[3] }}</td>
+                <td>{{ fila[4] }}</td>
+                <td>{{ fila[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
