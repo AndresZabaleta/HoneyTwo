@@ -59,23 +59,14 @@
 
 
 <div class="container mt-4">
-    <h2>Mejores Momentos para Reactivar Colmenas</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Puntuación</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for sugerencia in sugerencias %}
-            <tr>
-                <td>{{ sugerencia[0] }}</td>
-                <td>{{ sugerencia[1] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <h2>Bienvenido al sistema de recomendación de reactivación de colmenas</h2>
+
+    <h3>Mejores momentos para reactivar las colmenas:</h3>
+    <ul>
+        {% for mes in mejores_meses %}
+        <li>{{ mes }}</li>
+        {% endfor %}
+    </ul>
 </div>
 
 
