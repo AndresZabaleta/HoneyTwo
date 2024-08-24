@@ -69,5 +69,10 @@ def recoleccion():
 
     return render_template("recoleccion.html")
 
+@app.route("/recomendaciones")
+def recomendaciones():
+
+    return render_template("recomendaciones.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
