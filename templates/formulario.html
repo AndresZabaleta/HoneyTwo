@@ -16,17 +16,34 @@
             <label for="ubicacion">Ubicación colmenas(pais o region)</label>
             <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
         </div>
+        <!-- Estacionalidad -->
         <div class="form-group">
-            <label for="estacion">Estacionalidad(Primavera, Verano, Otoño, Invierno)</label>
-            <input type="text" class="form-control" id="estacion" name="estacion" step="0.1" required>
+            <label for="estacion">Estacionalidad</label>
+            <select class="form-control" id="estacion" name="estacion" required>
+                <option value="Primavera">Primavera</option>
+                <option value="Verano">Verano</option>
+                <option value="Otoño">Otoño</option>
+                <option value="Invierno">Invierno</option>
+            </select>
         </div>
+        <!-- Salud de las Colmenas -->
         <div class="form-group">
-            <label for="estsalud">Estado de salud colmena(Buena, Regular, Mala)</label>
-            <input type="text" class="form-control" id="estsalud" name="estsalud" step="0.1" required>
+            <label for="estsalud">Estado de salud colmena</label>
+            <select class="form-control" id="estsalud" name="estsalud" required>
+                <option value="Excelente">Excelente</option>
+                <option value="Buena">Buena</option>
+                <option value="Regular">Regular</option>
+                <option value="Pobre">Pobre</option>
+            </select>
         </div>
+        <!-- Demanda de Polen -->
         <div class="form-group">
-            <label for="polen">Demanda de polen(Alta, Media, Baja)</label>
-            <input type="text" class="form-control" id="polen" name="polen" step="0.1" required>
+            <label for="polen">Demanda de polen</label>
+            <select class="form-control" id="polen" name="polen" required>
+                <option value="Alta">Alta</option>
+                <option value="Media">Media</option>
+                <option value="Baja">Baja</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="temperatura">Temperatura(°C)</label>
@@ -39,6 +56,29 @@
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>
+
+
+<div class="container mt-4">
+    <h2>Mejores Momentos para Reactivar Colmenas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Puntuación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sugerencia in sugerencias %}
+            <tr>
+                <td>{{ sugerencia[0] }}</td>
+                <td>{{ sugerencia[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
 <div class="container mt-4">
     <h2>Datos de Apicultores</h2>
     <table class="table table-striped">
