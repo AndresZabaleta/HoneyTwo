@@ -26,57 +26,6 @@ def formulario():
     return render_template("formulario.html", datos=datos)
 
 
-def calcular_mejores_momentos():
-    conn = sqlite3.connect("apicultores.db")
-    cursor = conn.cursor()
-
-    # Obtener los datos de estacionalidad, salud y demanda de la base de datos
-    cursor.execute("SELECT estacionalidad, estsalud, polen FROM apicultores")
-    datos = cursor.fetchall()
-
-    conn.close()
-
-    if not datos:
-        return []
-
-    estacionalidad = np.array([fila[0] for fila in datos])
-    salud_colmena = np.array([fila[1] for fila in datos])
-    demanda_polen = np.array([fila[2] for fila in datos])
-
-    # Pesos para cada factor
-    peso_estacionalidad = 0.4
-    peso_salud_colmena = 0.3
-    peso_demanda_polen = 0.3
-
-    # Calcular puntaje total
-    puntaje_total = (
-        peso_estacionalidad * estacionalidad
-        + peso_salud_colmena * salud_colmena
-        + peso_demanda_polen * demanda_polen
-    )
-
-    # Identificar los 3 mejores momentos
-    mejores_momentos = np.argsort(puntaje_total)[-3:]
-
-    # Convertir a meses legibles (asumiendo que los datos están por meses)
-    meses = [
-        "Enero",
-        "Febrero",
-        "Marzo",
-        "Abril",
-        "Mayo",
-        "Junio",
-        "Julio",
-        "Agosto",
-        "Septiembre",
-        "Octubre",
-        "Noviembre",
-        "Diciembre",
-    ]
-    mejores_meses = [meses[i] for i in mejores_momentos]
-
-    return render_template("index.html", mejores_meses=mejores_meses)
-
 
 @app.route("/submit_form", methods=["POST"])
 def submit_form():
