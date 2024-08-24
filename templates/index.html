@@ -9,13 +9,31 @@
     <a class="btn btn-custom btn-lg" href="/formulario" role="button">Formulario</a>
 </div>
 
+<div class="container">
+    <div class="alert custom-bg" role="alert">
+        <h4 class="alert-heading">¿Sabías que?</h4>
+        <p>Las abejas pueden visitar hasta 5,000 flores en un solo día para recolectar polen. Esto les permite producir
+            miel y polen de alta calidad, que son esenciales para su supervivencia y para la polinización de las
+            plantas.</p>
+        <p>Existen más de 20,000 especies diferentes de abejas en el mundo. Las más conocidas son las abejas melíferas,
+            pero también hay muchas especies solitarias y no productoras de miel.</p>
+        <p>Las abejas juegan un papel crucial en la polinización de flores. Se estima que aproximadamente el 75% de las
+            plantas con flores en el mundo dependen de la polinización por abejas para reproducirse. Esto incluye muchas
+            de las plantas que consumimos, como frutas, vegetales y nueces.</p>
+        <hr>
+        <p class="mb-0" style="text-align: center; ">🐝¡Protejamos a las abejas para asegurar un ecosistema saludable!🐝
+        </p>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-4">
         <div class="card">
             <img src="{{ url_for('static', filename='img/colmena.jpg') }}" class="card-img-top" alt="Colmena">
             <div class="card-body">
                 <h5 class="card-title">Reactivación de Colmenas</h5>
-                <p class="card-text">Sugerencias sobre los mejores momentos para reactivar colmenas basadas en datos ambientales.</p>
+                <p class="card-text">Sugerencias sobre los mejores momentos para reactivar colmenas basadas en datos
+                    ambientales.</p>
                 <a href="/recomendaciones" class="btn btn-primary">Ver más</a>
             </div>
         </div>
@@ -25,7 +43,8 @@
             <img src="{{ url_for('static', filename='img/dashboard.jpg') }}" class="card-img-top" alt="Dashboard">
             <div class="card-body">
                 <h5 class="card-title">Disponibilidad del Producto</h5>
-                <p class="card-text">Consulta la disponibilidad de polen y ajusta tus estrategias de venta según la demanda.</p>
+                <p class="card-text">Consulta la disponibilidad de polen y ajusta tus estrategias de venta según la
+                    demanda.</p>
                 <a href="/disponibilidad" class="btn btn-primary">Ver más</a>
             </div>
         </div>
@@ -35,7 +54,8 @@
             <img src="{{ url_for('static', filename='img/recoleccion.jpg') }}" class="card-img-top" alt="Recolección">
             <div class="card-body">
                 <h5 class="card-title">Tiempos de Recolección</h5>
-                <p class="card-text">Identifica los periodos óptimos para la recolección de polen, maximizando la calidad del producto.</p>
+                <p class="card-text">Identifica los periodos óptimos para la recolección de polen, maximizando la
+                    calidad del producto.</p>
                 <a href="/recoleccion" class="btn btn-primary">Ver más</a>
             </div>
         </div>

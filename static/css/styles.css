@@ -28,6 +28,14 @@ body {
     color: #ffffff; /* Color del texto al pasar el mouse */
 }
 
+.custom-bg {
+    background-color: #cfa90071; /* Cambia este color según tu preferencia */
+    color: #752810; /* Cambia el color del texto si es necesario */
+    padding: 20px; /* Añade un poco de espacio alrededor del contenido */
+    border-radius: 5px; /* Opcional: para bordes redondeados */
+    /* text-align: center; */
+}
+
 .card {
     margin-top: 20px;
 }
