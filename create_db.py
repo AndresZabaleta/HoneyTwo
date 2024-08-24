@@ -23,8 +23,6 @@ cursor.execute('''
 conn.commit()
 conn.close()
 
-
-
 # import os
 
 # # Ruta al archivo de la base de datos
@@ -36,8 +34,6 @@ conn.close()
 #     print(f"Base de datos '{db_path}' eliminada.")
 # else:
 #     print(f"No se encontró la base de datos '{db_path}'.")
-
-
 
 # import sqlite3
 

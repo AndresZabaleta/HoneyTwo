@@ -26,7 +26,6 @@ def formulario():
     return render_template("formulario.html", datos=datos)
 
 
-
 @app.route("/submit_form", methods=["POST"])
 def submit_form():
     # Obtener los datos del formulario
@@ -57,6 +56,18 @@ def submit_form():
     conn.close()
 
     return redirect(url_for("formulario"))
+
+
+@app.route("/disponibilidad")
+def disponibilidad():
+
+    return render_template("disponibilidad.html")
+
+
+@app.route("/recoleccion")
+def recoleccion():
+
+    return render_template("recoleccion.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
