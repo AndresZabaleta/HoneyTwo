@@ -3,13 +3,15 @@
 {% block content %}
 <div class="container">
     <h1 class="my-4">Recomendaciones</h1>
-    <p>Inspección Visual: Abre la colmena y observa el comportamiento de las abejas. Busca signos de enfermedad, plagas, o abejas muertas. Verifica la presencia de la reina.</p>
-   <p></p> Revisar las Reservas de Miel: Asegúrate de que las abejas tengan suficiente miel almacenada para alimentarse, especialmente durante los periodos de poca floración o el invierno.</p>
+    <p>Inspección Visual: Abre la colmena y observa el comportamiento de las abejas. Busca signos de enfermedad, plagas,
+        o abejas muertas. Verifica la presencia de la reina.</p>
+    <p>Revisar las Reservas de Miel: Asegúrate de que las abejas tengan suficiente miel almacenada para alimentarse,
+        especialmente durante los periodos de poca floración o el invierno.</p>
 </div>
 
 <div class="container mt-5">
     <h2>Recomendación para Reactivación de Colmenas</h2>
-    <form action="/recomendaciones" method="POST">
+    <form id="recomendaciones-form" onsubmit="return recomendarDia();">
         <div class="form-group">
             <label for="cantidad_colmenas">Cantidad de Colmenas:</label>
             <input type="number" class="form-control" id="cantidad_colmenas" name="cantidad_colmenas" required>
@@ -45,15 +47,68 @@
         </div>
         <button type="submit" class="btn btn-primary">Recomendar</button>
     </form>
-
-    <!-- Mostrar resultados después de enviar el formulario -->
-   {% if evaluacion_salud and recomendacion_reactivacion %}
     <div class="mt-4">
-        <h4>Resultado de Evaluación:</h4>
-        <p>{{ evaluacion_salud }}</p>
-        <h4>Recomendación para Reactivación:</h4>
-        <p>{{ recomendacion_reactivacion }}</p>
+        <h3>Resultado:</h3>
+        <div class="alert alert-info" role="alert">
+            <p id="resultado-recoleccion" class="mb-0">Aquí aparecerá el mejor día o semana para la recolección.</p>
+        </div>
     </div>
-    {% endif %}
+
 </div>
-{% endblock %} 
+
+<script>
+    function recomendarDia() {
+        // Obtén los valores de los campos del formulario
+        const estacionalidad = document.getElementById('estacionalidad').value;
+        const saludColmena = document.getElementById('salud_colmena').value;
+        const demandaPolen = document.getElementById('demanda_polen').value;
+
+        let resultado = '';
+
+        // Reglas mejoradas para determinar el mejor día o semana
+
+        // Primavera y Salud Buena
+        if (estacionalidad === 'Primavera' && saludColmena === 'Buena') {
+            if (demandaPolen === 'Alta') {
+                resultado = 'El mejor día para la recolección es el miércoles, ya que las colmenas están en su máximo rendimiento y la demanda es alta.';
+            } else if (demandaPolen === 'Media') {
+                resultado = 'El mejor día para la recolección es el jueves, para aprovechar el crecimiento de la producción.';
+            } else {
+                resultado = 'El mejor día para la recolección es el viernes, cuando la producción es suficiente para cubrir la demanda baja.';
+            }
+        }
+        // Verano y Salud Regular o Alta
+        else if (estacionalidad === 'Verano') {
+            if (saludColmena === 'Buena' && demandaPolen === 'Alta') {
+                resultado = 'El mejor día para la recolección es el martes, ya que la demanda es alta y la salud es óptima.';
+            } else if (saludColmena === 'Regular') {
+                resultado = 'El mejor día para la recolección es el viernes, para dar tiempo a la colmena de recuperarse antes de la recolección.';
+            } else {
+                resultado = 'La recolección debe realizarse con precaución el domingo, cuando la demanda es más baja.';
+            }
+        }
+        // Otoño y Salud Mala
+        else if (estacionalidad === 'Otoño' && saludColmena === 'Mala') {
+            resultado = 'Recomendaría evitar la recolección esta semana y enfocarse en mejorar la salud de las colmenas.';
+        }
+        // Invierno con cualquier condición
+        else if (estacionalidad === 'Invierno') {
+            resultado = 'El invierno es generalmente una época difícil para la recolección. El mejor día sería el sábado, pero solo si la demanda es alta.';
+        }
+        // Caso general para salud Regular y demanda Media
+        else if (saludColmena === 'Regular' && demandaPolen === 'Media') {
+            resultado = 'El mejor día para la recolección es el viernes, para maximizar la producción sin comprometer la salud de las colmenas.';
+        }
+        // Otros casos
+        else {
+            resultado = 'El mejor día para la recolección es el domingo, cuando las condiciones generales son promedio.';
+        }
+
+        // Mostrar el resultado en la página
+        document.getElementById('resultado-recoleccion').textContent = resultado;
+
+        // Prevenir el envío del formulario para que no se recargue la página
+        return false;
+    }
+</script>
+{% endblock %}
