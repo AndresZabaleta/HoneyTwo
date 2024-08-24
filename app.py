@@ -15,36 +15,49 @@ def index():
 
 @app.route('/formulario')
 def formulario():
-    return render_template('formulario.html')
+    conn = sqlite3.connect('apicultores.db')
+    c = conn.cursor()
+    c.execute('SELECT * FROM datos_apicultores')
+    datos = c.fetchall()
+    conn.close()
+    return render_template('formulario.html', datos=datos)
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
+    # Obtener los datos del formulario
     fecha = request.form['fecha']
     numcol = request.form['numcol']
     ubicacion = request.form['ubicacion']
+    estacion = request.form['estacion']
+    estsalud = request.form['estsalud']
+    polen = request.form['polen']
     temperatura = request.form['temperatura']
     humedad = request.form['humedad']
 
-    # Guardar datos en la base de datos
-    conn = sqlite3.connect('apicultura.db')
-    c = conn.cursor()
-    c.execute('''
-        INSERT INTO datos_apicultor (fecha, numcol, ubicacion, temperatura, humedad)
-        VALUES (?, ?, ?, ?, ?)
-    ''', (fecha, numcol, ubicacion, temperatura, humedad))
+    # Conectar a la base de datos
+    conn = sqlite3.connect('apicultores.db')
+    cursor = conn.cursor()
+
+    # Insertar los datos en la base de datos
+    cursor.execute("""
+        INSERT INTO datos_apicultores (fecha, numcol, ubicacion, estacion, estsalud, polen, temperatura, humedad)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (fecha, numcol, ubicacion, estacion, estsalud, polen, temperatura, humedad))
+
+    # Guardar los cambios y cerrar la conexión
     conn.commit()
     conn.close()
 
     return redirect(url_for('datos'))
 
-@app.route('/datos')
-def datos():
-    conn = sqlite3.connect('apicultura.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM datos_apicultor')
-    datos = c.fetchall()
-    conn.close()
-    return render_template('datos.html', datos=datos)
+# @app.route('/datos')
+# def datos():
+#     conn = sqlite3.connect('apicultura.db')
+#     c = conn.cursor()
+#     c.execute('SELECT * FROM datos_apicultor')
+#     datos = c.fetchall()
+#     conn.close()
+#     return render_template('datos.html', datos=datos)
 
 # Ruta para mostrar los gráficos
 @app.route('/graficos')
